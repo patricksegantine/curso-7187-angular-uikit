@@ -1,0 +1,47 @@
+<div class="uk-flex-center" uk-grid>
+    <div class="uk-width-1-3@m">
+        <p class="uk-text-center uk-margin-large-top uk-margin-medium-bottom">
+            <!-- <span class="uk-icon" uk-icon="icon: user; ratio: 5.7"></span> -->
+        </p>
+
+        <app-loading *ngIf="isBusy"></app-loading>
+
+        <form [formGroup]="form" *ngIf="!isBusy">
+            <div class="uk-card uk-card-primary uk-card-body uk-box-shadow-small">
+                <h3 class="uk-card-title">Cadastro de Clientes</h3>
+                <div class="uk-margin">
+                    <input type="text" class="uk-input uk-form-large" placeholder="Nome" 
+                        formControlName="nome"
+                        [ngClass]="{'uk-form-danger': (!form.controls.nome.valid && !form.controls.nome.pristine)}">
+                </div>
+                <div class="uk-margin">
+                    <input type="email" class="uk-input uk-form-large" placeholder="E-mail" 
+                        formControlName="email"
+                        [ngClass]="{'uk-form-danger': (!form.controls.email.valid && !form.controls.email.pristine)}">
+                </div>
+                <div class="uk-margin">
+                    <input type="text" class="uk-input uk-form-large" placeholder="CPF" 
+                        formControlName="documento"
+                        [ngClass]="{'uk-form-danger': (!form.controls.documento.valid && !form.controls.documento.pristine)}">
+                </div>
+                <div class="uk-margin">
+                    <input type="password" class="uk-input uk-form-large" placeholder="Senha" 
+                        formControlName="senha"
+                        [ngClass]="{'uk-form-danger': (!form.controls.senha.valid && !form.controls.senha.pristine)}">
+                </div>
+                <div class="uk-margin uk-text-right">
+                    <button class="uk-button uk-button-default"
+                        (click)="registrar()"
+                        [disabled]="!form.valid"
+                    >Registrar</button>
+                </div>
+            </div>
+        </form>
+
+        <p class="uk-text-center">
+            <a [routerLink]="['/login']" class="uk-button uk-button-large uk-button-default uk-width-1-1">
+                Voltar
+            </a>
+        </p>
+    </div>
+</div>
